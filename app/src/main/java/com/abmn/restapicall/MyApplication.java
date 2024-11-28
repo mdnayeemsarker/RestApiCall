@@ -12,7 +12,7 @@ public class MyApplication extends Application {
         super.onCreate();
 
         // Initialize base configuration
-        String API_BASE_URL = "https://juktoshop.com/api/v1/";
+        String API_BASE_URL = "https://your-domain.com/api/";
         String API_KEY = "RELEASE_API_KEY";
         boolean formatResponse = true;
         boolean IS_ORGANIZE = true;
