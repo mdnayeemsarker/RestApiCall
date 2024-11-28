@@ -14,7 +14,7 @@ public class MyApplication extends Application {
         // Initialize base configuration
         String API_BASE_URL = "https://juktoshop.com/api/v1/";
         String API_KEY = "RELEASE_API_KEY";
-        boolean formatResponse = false;
+        boolean formatResponse = true;
         boolean IS_ORGANIZE = true;
         boolean DEBUG_MODE = true;
         Config.init(API_BASE_URL, formatResponse, IS_ORGANIZE, DEBUG_MODE);

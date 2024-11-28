@@ -48,18 +48,18 @@ public class ApiConfig {
                 JSONObject jsonObject = new JSONObject(response);
                 if (Config.isFormatRes()) {
                     if (Config.isOrganizeMode()) {
-                        result.onResponse(true, String.valueOf(jsonObject), jsonObject.getString("message"));
+                        result.onResponse(true, String.valueOf(jsonObject), jsonObject.getString("message"), jsonObject.getString("keyVal"));
                     } else {
                         JSONObject success = jsonObject.getJSONObject("success");
-                        result.onResponse(true, String.valueOf(success.getJSONObject("data")), jsonObject.getString("message"));
+                        result.onResponse(true, String.valueOf(success.getJSONObject("data")), jsonObject.getString("message"), "");
                     }
                 }else {
-                    result.onResponse(true, response, "UnFormatted Response");
+                    result.onResponse(true, response, "UnFormatted Response", "");
                 }
             } catch (Exception e) {
                 if (Config.isDebugMode())
                     Log.d("ABMN_" + endpoint, Objects.requireNonNull(e.getMessage()));
-                result.onResponse(false, "", "Error Getting...");
+                result.onResponse(false, "", "Error Getting...", "");
             }
         }, error -> {
             progressDisplay.hideProgress();
@@ -70,18 +70,18 @@ public class ApiConfig {
                     JSONObject jsonObject = new JSONObject(errorData);
                     if (Config.isFormatRes()) {
                         if (Config.isOrganizeMode()) {
-                            result.onResponse(true, String.valueOf(jsonObject), jsonObject.getString("message"));
+                            result.onResponse(true, String.valueOf(jsonObject), jsonObject.getString("message"), "");
                         } else {
                             JSONObject success = jsonObject.getJSONObject("error");
-                            result.onResponse(true, String.valueOf(success.getJSONObject("error")), jsonObject.getString("message"));
+                            result.onResponse(true, String.valueOf(success.getJSONObject("error")), jsonObject.getString("message"), "");
                         }
                     }else {
-                        result.onResponse(true, errorData, "UnFormatted Response");
+                        result.onResponse(true, errorData, "UnFormatted Response", "");
                     }
                 } catch (Exception e) {
                     if (Config.isDebugMode())
                         Log.d("ABMN_" + endpoint, Objects.requireNonNull(e.getMessage()));
-                    result.onResponse(false, "", "Error Getting...");
+                    result.onResponse(false, "", "Error Getting...", "");
                 }
             }
         }) {

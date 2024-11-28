@@ -36,10 +36,11 @@ public class MainActivity extends AppCompatActivity {
     public void clickToCheck(View view) {
         Log.d("ApiConfig", Config.getBaseUrl());
 
-        apiConfig.makeRequest((result, response, message) -> {
+        apiConfig.makeRequest((result, response, message, key) -> {
             Log.d("ApiCallResult: ", String.valueOf(result));
             Log.d("ApiCallResponse: ", response);
             Log.d("ApiCallMessage: ", message);
+            Log.d("ApiCallKey: ", key);
         }, Request.GET(),"app-home", new HashMap<>(), true);
     }
 }
