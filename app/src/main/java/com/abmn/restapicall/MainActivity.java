@@ -14,11 +14,7 @@ import com.abmn.library.restapicall.ApiConfig;
 import com.abmn.library.restapicall.Core.Config;
 import com.abmn.library.restapicall.Core.Request;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.util.HashMap;
-import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
     private ApiConfig apiConfig;
@@ -34,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         });
         apiConfig = new ApiConfig(this);
 
-        Log.d("ApiConfigFirst", ApiConfig.getMessage());
+        Log.d("ApiConfigFirst", Config.getMessage());
     }
 
     public void clickToCheck(View view) {

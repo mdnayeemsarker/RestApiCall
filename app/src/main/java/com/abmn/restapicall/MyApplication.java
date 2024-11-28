@@ -14,9 +14,10 @@ public class MyApplication extends Application {
         // Initialize base configuration
         String API_BASE_URL = "https://juktoshop.com/api/v1/";
         String API_KEY = "RELEASE_API_KEY";
+        boolean formatResponse = false;
         boolean IS_ORGANIZE = true;
         boolean DEBUG_MODE = true;
-        Config.init(API_BASE_URL, API_KEY, IS_ORGANIZE, DEBUG_MODE);
+        Config.init(API_BASE_URL, formatResponse, IS_ORGANIZE, DEBUG_MODE);
 
         // Add dynamic headers
         Config.addHeader("Content-Type", "application/json");
@@ -28,7 +29,6 @@ public class MyApplication extends Application {
         // Add dynamic parameters
 //        Config.addParameter("lang", "en");
 //        Config.addParameter("timezone", "GMT+6");
-
 
         // Set progress bar colors globally
         Config.setProgressColors(

@@ -9,14 +9,13 @@ public class Config {
     private static final Map<String, String> headers = new HashMap<>();
     private static final Map<String, String> parameters = new HashMap<>();
     private static String apiBaseUrl;
-    private static String apiKey;
+    private static boolean formatRes;
     private static boolean organizeMode;
     private static boolean debugMode;
     private static int startColor = Color.parseColor("#A867F6"); // Default start color
     private static int centerColor = Color.parseColor("#B593DF"); // Default center color
     private static int endColor = Color.parseColor("#6D29BF"); // Default end color
 
-    // Getter methods for progress bar colors
     public static int getStartColor() {
         return startColor;
     }
@@ -37,9 +36,9 @@ public class Config {
     }
 
     // Initialize the base configuration
-    public static void init(String baseUrl, String key, boolean organize, boolean debug) {
+    public static void init(String baseUrl, boolean format, boolean organize, boolean debug) {
         apiBaseUrl = baseUrl;
-        apiKey = key;
+        formatRes = format;
         organizeMode = organize;
         debugMode = debug;
     }
@@ -49,8 +48,8 @@ public class Config {
         return apiBaseUrl;
     }
 
-    public static String getApiKey() {
-        return apiKey;
+    public static boolean isFormatRes() {
+        return formatRes;
     }
 
     public static boolean isDebugMode() {
@@ -89,6 +88,10 @@ public class Config {
 
     public static Map<String, String> getParameters() {
         return parameters;
+    }
+
+    public static String getMessage() {
+        return Config.getBaseUrl();
     }
 
 }
