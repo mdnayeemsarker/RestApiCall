@@ -1,5 +1,6 @@
 plugins {
     alias(libs.plugins.android.library)
+    id 'maven-publish'
 }
 
 android {
@@ -34,5 +35,32 @@ dependencies {
 
     implementation libs.gson
     implementation libs.volley
+}
+publishing {
+    publications {
+        release(MavenPublication) {
+            groupId 'com.github.mdnayeemsarker'
+            artifactId 'RestApiCall'
+            version '1.0.1'
 
+            pom {
+                name = "RestApiCall"
+                description = "A powerful Rest API Call library"
+                url = "https://github.com/mdnayeemsarker/RestApiCall"
+                licenses {
+                    license {
+                        name = "Apache-2.0"
+                        url = "https://www.apache.org/licenses/LICENSE-2.0.txt"
+                    }
+                }
+                developers {
+                    developer {
+                        id = "mdnayeemsarker"
+                        name = "MD NAYEEM SARKER"
+                        email = "dev.ab.nayeem@gmail.com"
+                    }
+                }
+            }
+        }
+    }
 }

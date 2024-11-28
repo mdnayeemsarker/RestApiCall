@@ -6,7 +6,6 @@ import android.view.View;
 
 import com.abmn.library.restapicall.Core.Callback;
 import com.abmn.library.restapicall.Core.Config;
-import com.abmn.library.restapicall.Core.InternetConfig;
 import com.abmn.library.restapicall.Core.ProgressDisplay;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.NetworkResponse;
@@ -72,8 +71,8 @@ public class ApiConfig {
                         if (Config.isOrganizeMode()) {
                             result.onResponse(true, String.valueOf(jsonObject), jsonObject.getString("message"), "");
                         } else {
-                            JSONObject success = jsonObject.getJSONObject("error");
-                            result.onResponse(true, String.valueOf(success.getJSONObject("error")), jsonObject.getString("message"), "");
+                            JSONObject errorObj = jsonObject.getJSONObject("error");
+                            result.onResponse(true, String.valueOf(errorObj.getJSONObject("error")), errorObj.getString("message"), "");
                         }
                     }else {
                         result.onResponse(true, errorData, "UnFormatted Response", "");
