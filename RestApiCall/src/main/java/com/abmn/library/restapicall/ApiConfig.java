@@ -1,8 +1,10 @@
 package com.abmn.library.restapicall;
 
 import android.app.Activity;
+import android.app.Application;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 
 import com.abmn.library.restapicall.Core.Callback;
 import com.abmn.library.restapicall.Core.Config;
@@ -20,7 +22,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-public class ApiConfig {
+public class ApiConfig extends Application {
 
     Activity activity;
 
@@ -150,13 +152,13 @@ public class ApiConfig {
                     JSONObject jsonObject = new JSONObject(errorData);
                     if (Config.isFormatResponse()) {
                         if (Config.isOrganizeMode()) {
-                            result.onResponse(true, errorData, jsonObject.getString("message"), "");
+                            result.onResponse(false, errorData, jsonObject.getString("message"), "");
                         } else {
                             JSONObject errorObj = jsonObject.getJSONObject("error");
-                            result.onResponse(true, errorData, errorObj.getString("message"), "");
+                            result.onResponse(false, errorData, errorObj.getString("message"), "");
                         }
                     } else {
-                        result.onResponse(true, errorData, "UnFormatted Response", "");
+                        result.onResponse(false, errorData, "UnFormatted Response", "");
                     }
                 } catch (Exception e) {
                     if (Config.isDebugMode())
@@ -168,7 +170,6 @@ public class ApiConfig {
             @Override
             public Map<String, String> getHeaders() {
                 Map<String, String> headers = Config.getHeaders();
-                headers.put("Content-Type", "application/json"); // Set the correct content type
                 if (Config.isDebugMode()) Log.d("ABMN_header", headers.toString());
                 return headers;
             }
@@ -176,5 +177,14 @@ public class ApiConfig {
 
         RequestQueue queue = Volley.newRequestQueue(activity);
         queue.add(request);
+    }
+    public void hideKeyboard(View root) {
+        try {
+            InputMethodManager inputMethodManager = (InputMethodManager) activity.getSystemService(INPUT_METHOD_SERVICE);
+            assert inputMethodManager != null;
+            inputMethodManager.hideSoftInputFromWindow(root.getApplicationWindowToken(), 0);
+        } catch (Exception e) {
+            Log.d("keyboardHideEx", Objects.requireNonNull(e.getMessage()));
+        }
     }
 }

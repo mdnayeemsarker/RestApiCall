@@ -79,4 +79,8 @@ public class MainActivity extends AppCompatActivity {
             Log.d("ApiCallKey: ", key);
         }, Method.PATCH(),"delete", patchParams, true);
     }
+
+    public void clickEditTextBtn(View view) {
+        apiConfig.hideKeyboard(view);
+    }
 }
