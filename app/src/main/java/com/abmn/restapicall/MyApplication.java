@@ -12,23 +12,29 @@ public class MyApplication extends Application {
         super.onCreate();
 
         // Initialize base configuration
-        String API_BASE_URL = "https://your-domain.com/api/";
-        String API_KEY = "RELEASE_API_KEY";
-        boolean formatResponse = true;
-        boolean IS_ORGANIZE = true;
-        boolean DEBUG_MODE = true;
-        Config.init(API_BASE_URL, formatResponse, IS_ORGANIZE, DEBUG_MODE);
+        String API_BASE_URL = "https://your-domain.com"; // Adjust your api base url
+        boolean IS_DEBUG_MODE = true; // set true if you want to get debug log
+        boolean IS_FORMAT_RESPONSE = true; // set true if you want to Json Formated response see more for formated response example
+        boolean IS_ORGANIZE_RESPONSE = true; // set true for organize response see more for organize response example
+
+        // Api base url initialization
+        Config.init(API_BASE_URL); // you mast need init otherwise base url not connected with library
+
+        Config.setDebugMode(IS_DEBUG_MODE);
+        Config.setFormatResponseMode(IS_FORMAT_RESPONSE);
+        Config.setOrganizeResponseMode(IS_ORGANIZE_RESPONSE);
 
         // Add dynamic headers
-        Config.addHeader("Content-Type", "application/json");
-        Config.addHeader("Accept", "application/json");
-        Config.addHeader("Authorization", "Bearer " + API_KEY);
-        Config.addHeader("X-Requested-With", "app");
-        Config.addHeader("x-api-key", "eyJpdiI6IkJxRkVvUzJQT2VVWVpiNldRbmxJV3c9PSIsInZhbHVlIjoidkpHcmJPOHVkOFlHR2ltM0JZNDR2dGdFWW5iVEZJYWwrOXN3aGtRYnJSeW44aXd0dFltRUg0OGZMMkllWk1ENCIsIm1hYyI6ImU4MjE4Y2UyZjRlYjNiYjhlOWZjODJhOTE4OWFhNzVmMzRkOTQyYzY4Njc2NzMyMjU5ODkxNzZkYTEyMmYxZDYiLCJ0YWciOiIifQ==");
+        Config.addHeader("Accept", "application/json"); // optional
+        Config.addHeader("Content-Type", "application/x-www-form-urlencoded"); // need for string request
+        Config.addHeader("Content-Type", "application/json"); // need for json request
+        Config.addHeader("Authorization", "Bearer " + "TOKEN"); // optional
+        Config.addHeader("X-Requested-With", "app"); // optional
+        Config.addHeader("x-api-key", "app"); // optional
 
         // Add dynamic parameters
-//        Config.addParameter("lang", "en");
-//        Config.addParameter("timezone", "GMT+6");
+        Config.addParameter("lang", "en"); // optional
+        Config.addParameter("timezone", "GMT+6"); // optional
 
         // Set progress bar colors globally
         Config.setProgressColors(
@@ -36,6 +42,5 @@ public class MyApplication extends Application {
                 Color.parseColor("#FFC107"), // Center color
                 Color.parseColor("#4CAF50")  // End color
         );
-
     }
 }
