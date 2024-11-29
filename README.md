@@ -77,8 +77,8 @@ For calling an API go to you java or fragment initialize ApiConfig with an insta
 ```
 
 There are 2 types of request format here one is stringRequest or jsonRequest
-For String Request apiConfig.stringRequest must need to set header Config.addHeader("Content-Type", "application/x-www-form-urlencoded"); for string request
-For Json Request apiConfig.jsonRequest must need to set header Config.addHeader("Content-Type", "application/json"); for json request
+* For String Request apiConfig.stringRequest must need to set header Config.addHeader("Content-Type", "application/x-www-form-urlencoded"); for string request
+* For Json Request apiConfig.jsonRequest must need to set header Config.addHeader("Content-Type", "application/json"); for json request
 
 For Get Request
 ```bash
