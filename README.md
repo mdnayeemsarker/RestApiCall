@@ -138,9 +138,9 @@ For PATCH Request
 ```
 
 Additional Note you can also call 
-    *HEAD Request 
-    *OPTIONS Request 
-    *TRACE Request 
+* HEAD Request 
+* OPTIONS Request 
+* TRACE Request 
 
 ## Getting To Know MD NAYEEM SARKER
 
