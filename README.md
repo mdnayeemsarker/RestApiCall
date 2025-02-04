@@ -19,7 +19,7 @@ Add Dependency Just go to your build.gradle app Module:
 //Add the dependency
 dependencies {
 ```bash
-	implementation 'com.github.mdnayeemsarker:RestApiCall:1.0.1'
+	implementation 'com.github.mdnayeemsarker:RestApiCall:1.0.3'
 ```
 }
 //
