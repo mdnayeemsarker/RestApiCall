@@ -41,7 +41,7 @@ publishing {
         release(MavenPublication) {
             groupId 'com.github.mdnayeemsarker'
             artifactId 'RestApiCall'
-            version '1.0.2'
+            version '1.0.4'
 
             pom {
                 name = "RestApiCall"

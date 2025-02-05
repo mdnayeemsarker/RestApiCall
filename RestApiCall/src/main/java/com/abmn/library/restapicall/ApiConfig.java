@@ -49,7 +49,7 @@ public class ApiConfig extends Application {
                 JSONObject jsonObject = new JSONObject(response);
                 if (Config.isFormatResponse()) {
                     if (Config.isOrganizeMode()) {
-                        result.onResponse(true, String.valueOf(jsonObject), jsonObject.getString("message"), jsonObject.getString("keyVal"));
+                        result.onResponse(true, String.valueOf(jsonObject.getJSONObject("data")), jsonObject.getString("message"), jsonObject.getString("keyVal"));
                     } else {
                         JSONObject success = jsonObject.getJSONObject("success");
                         result.onResponse(true, String.valueOf(success.getJSONObject("data")), success.getString("message"), "");
